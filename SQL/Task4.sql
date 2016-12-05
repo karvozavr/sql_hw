@@ -1,3 +1,4 @@
-SELECT Country.Name, City.ID FROM Country
+SELECT Country.Name, COUNT(City.Name) AS MilNum FROM Country
     JOIN City ON City.CountryCode = Country.Code
-    WHERE City.Population > 1000000;
+    GROUP BY City.CountryCode
+    ORDER BY MilNum DESC, Country.Name ASC;
