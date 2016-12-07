@@ -1,4 +1,6 @@
 SELECT Country.Name, LiteracyRate.Rate FROM LiteracyRate 
-    JOIN Country ON Country.Code = LiteracyRate.CountryCode
-    ORDER BY Rate DESC, Year DESC
+    INNER JOIN Country ON Country.Code = LiteracyRate.CountryCode
+    GROUP BY Country.Name
+    HAVING LiteracyRate.Year = MAX(LiteracyRate.Year)
+    ORDER BY Rate DESC
     LIMIT 1;
